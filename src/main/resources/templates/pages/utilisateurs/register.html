@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="FR" xmlns="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+		<title>Liste des Utilisateurs</title>	
+	</head>
+	<body>
+		<h1>Liste des utilisateurs :</h1>
+		<h1 th:text="#{user.email}"></h1>
+		<form​ ​th:action​=​"@{/register}"​ ​th:method​=​"POST">
+		    ​<fieldset>        ​
+				<legend>​User​</legend>        ​
+				<input​ ​th:field​=​"*{user.email}"​ ​th:type​=​"text"​ ​th:placeholder​=​"#{user.email}">
+				        ​<span​ ​th:if​=​"${#fields.hasErrors('user.email')}"​ ​th:errors​=​"*{user.email}"​></span>
+				        ​<br>
+				
+				<select​ ​th:field​=​"*{situation.orientation}">    ​
+				<option​ ​value​=​""​ ​th:text​=​"#{situation.orientation}"​ ​selected​></option>    ​
+				<option​  ​th:each​=​"o : ${orientation}"​ ​th:value​=​"${o}"​ ​th:text​=​"${o.name()}"​></option>  
+				</select>  
+			</fieldset>
+		</form>
+	</body>
+</html>
