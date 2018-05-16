@@ -3,6 +3,7 @@ package com.formation.dating.entity;
 import java.util.Collection;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -11,6 +12,7 @@ import javax.persistence.ManyToOne;
 public class CentreInteret {
 	
 	@Id
+	@GeneratedValue
 	private Integer idCi;
 	@Override
 	public String toString() {

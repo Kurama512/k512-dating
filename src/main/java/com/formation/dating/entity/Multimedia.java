@@ -3,6 +3,7 @@ package com.formation.dating.entity;
 import java.util.Collection;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
@@ -10,6 +11,7 @@ import javax.persistence.ManyToMany;
 public class Multimedia {
 		
 		@Id
+		@GeneratedValue
 		private Integer idMultimedia;
 		private String typeMultimedia;
 		private String genre;

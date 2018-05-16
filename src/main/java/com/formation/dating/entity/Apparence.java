@@ -3,6 +3,7 @@ package com.formation.dating.entity;
 import java.util.Collection;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -11,6 +12,7 @@ import javax.persistence.OneToMany;
 public class Apparence {
 	
 	@Id
+	@GeneratedValue
 	private Integer idApparence;
 	private Integer taille;
 	private String couleurYeux;

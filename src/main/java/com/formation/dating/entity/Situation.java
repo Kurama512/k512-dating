@@ -3,6 +3,7 @@ package com.formation.dating.entity;
 import java.util.Collection;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -11,6 +12,7 @@ import javax.persistence.OneToMany;
 public class Situation {
 	
 	@Id
+	@GeneratedValue
 	private Integer idSituation;
 	private String statutPro;
 	private String statutPerso;

@@ -3,6 +3,7 @@ package com.formation.dating.entity;
 import java.util.Collection;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -10,6 +11,7 @@ import javax.persistence.OneToMany;
 public class Adresse {
 	
 	@Id
+	@GeneratedValue
 	private Integer idAdresse;
 	private Integer codePostal;
 	private String ville;

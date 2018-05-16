@@ -1,6 +1,7 @@
 package com.formation.dating.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
@@ -8,6 +9,7 @@ import javax.persistence.ManyToOne;
 public class Photo {
 	
 	@Id
+	@GeneratedValue
 	private Integer idPhoto;
 	private String lien;
 	private Integer note;

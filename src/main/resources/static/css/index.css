@@ -1,7 +1,29 @@
 body {
 	background-color: #ffc8c8;
+	width:50%;
 	}
 	
 fieldset{
 	width:25%;
+	height:235px;
 }	
+
+.utilisateur {
+	float:left;
+}
+
+.situation {
+	float:left;
+}
+
+.adresse {
+	float:left;
+}
+
+.apparence {
+	float:left;
+}
+
+.action {
+	clear:both;
+}
