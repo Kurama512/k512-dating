@@ -3,10 +3,10 @@
 	<head>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
-		<title>Nouvel Utilisateur</title>	
+		<title th:text="#{user.new}"></title>	
 	</head>
 	<body>
-		<h1>Nouvel utilisateur :</h1>
+		<h1 th:text="#{user.new}"></h1>
 		<form​  th:action="@{/register}" th:method="post">
 		<div class="utilisateur">	​
 		<fieldset>
@@ -121,10 +121,10 @@
 		</div>						
 			<br>
 		<div class="action">	
-			<fieldset>					
+					<br>				
 					<input type="submit" value="Valider">
 					<a href="/dating/utilisateurs"><input type="reset" value="Annuler"></a>
-			</fieldset>
+			
 		</div>	
 		</form>
 	</body>
