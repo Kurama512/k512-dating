@@ -19,7 +19,10 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.formation.dating.entity.Adresse;
+import com.formation.dating.entity.Situation;
 import com.formation.dating.entity.Utilisateur;
+import com.formation.dating.enums.Orientation;
 import com.formation.dating.services.UtilisateurService;
 
 @Controller
@@ -44,8 +47,13 @@ private final UtilisateurService utilisateurService;
 	//----------------------CREATE--------------------------------------
 	@GetMapping("/dating/utilisateurs/register")
 	public ModelAndView createUser(ModelMap model){
+		model.addAttribute("orientation", Orientation.values());
 		Utilisateur user = new Utilisateur();
-		return new ModelAndView ("pages/utilisateurs/register").addObject("user", user);
+		Situation situation = new Situation();
+		Adresse adresse= new Adresse();
+		return new ModelAndView ("pages/utilisateurs/register").addObject("user", user)
+				.addObject("situation",situation)
+				.addObject("adresse", adresse);
 	}
 	
 	@PostMapping("/dating/utilisateurs/register")
@@ -58,10 +66,9 @@ private final UtilisateurService utilisateurService;
 			model.addAttribute("users",users);
 			return ("pages/utilisateurs/register");
 		}else{
-			model.addAttribute("user");
+			model.addAttribute("user", user);
 			utilisateurService.save(user);
 			return "redirect:/dating/utilisateurs";
 		}	
 	}
-	
 }

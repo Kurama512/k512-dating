@@ -3,22 +3,97 @@
 	<head>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
-		<title>Liste des Utilisateurs</title>	
+		<title>Nouvel Utilisateur</title>	
 	</head>
 	<body>
-		<h1>Liste des utilisateurs :</h1>
-		<h1 th:text="#{user.email}"></h1>
-		<form​ ​th:action​=​"@{/register}"​ ​th:method​=​"POST">
-		    ​<fieldset>        ​
-				<legend>​User​</legend>        ​
-				<input​ ​th:field​=​"*{user.email}"​ ​th:type​=​"text"​ ​th:placeholder​=​"#{user.email}">
-				        ​<span​ ​th:if​=​"${#fields.hasErrors('user.email')}"​ ​th:errors​=​"*{user.email}"​></span>
-				        ​<br>
+		<h1>Nouvel utilisateur :</h1>
+		<form​  th:action="@{/dating/utilisateurs/register}" th:method="post">
+		​<fieldset>
+			<legend>​Utilisateur​</legend>
+				<input th:type="email" th:field="*{user.emailUtilisateur}" th:placeholder="#{user.email}"/>
+					<span th:if="${#fields.hasErrors('user.emailUtilisateur')}" th:errors="*{user.emailUtilisateur}"></span>​
+					​<br>
+				<input th:type="text" th:field="*{user.nom}" th:placeholder="#{user.lastName}"/> 
+					<span th:if="${#fields.hasErrors('user.nom')}" th:errors="*{user.nom}"></span>​
+					​<br>	
+				<input th:type="text" th:field="*{user.prenom}" th:placeholder="#{user.firstName}"/> 
+					<span th:if="${#fields.hasErrors('user.prenom')}" th:errors="*{user.prenom}"></span>​
+					​<br>		
+				<input th:type="date" th:field="*{user.dateNaissance}" th:placeholder="#{user.birthday}"/> 
+					<span th:if="${#fields.hasErrors('user.dateNaissance')}" th:errors="*{user.dateNaissance}"></span>​
+					​<br>		
+				<input th:type="text" th:field="*{user.sexe}" th:placeholder="#{user.sexe}"/> 
+					<span th:if="${#fields.hasErrors('user.sexe')}" th:errors="*{user.sexe}"></span>​
+					​<br>	
+				<input th:type="password" th:field="*{user.motDePasse}" th:placeholder="#{user.password}"/> 
+					<span th:if="${#fields.hasErrors('user.motDePasse')}" th:errors="*{user.motDePasse}"></span>​
+					​<br>
+				<input th:type="text" th:field="*{user.description}" th:placeholder="#{user.description}"/> 
+					<span th:if="${#fields.hasErrors('user.description')}" th:errors="*{user.description}"></span>​
+					​<br>	
+				<input th:type="text" th:field="*{user.pseudo}" th:placeholder="#{user.pseudo}"/> 
+					<span th:if="${#fields.hasErrors('user.pseudo')}" th:errors="*{user.pseudo}"></span>​
+					​<br>	
+				<input th:type="text" th:field="*{user.numeroTel}" th:placeholder="#{user.numeroTel}"/> 
+					<span th:if="${#fields.hasErrors('user.numeroTel')}" th:errors="*{user.numeroTel}"></span>​
+					​<br>		
+				<input th:type="text" th:field="*{user.type}" th:placeholder="#{user.type}"/> 
+					<span th:if="${#fields.hasErrors('user.type')}" th:errors="*{user.type}"></span>​
+					​<br>	
+					
+				<select th:fiels="*{situation.orientation}">
+					<option value="" th:text="#{situation.orientation}" selected></option>
+					<option th:each="o:${orientation}" th:value="${o}"th:text="${o.name()}"></option>
+				</select>		
+					<br>
+			</fieldset>		
+			​<fieldset>
+			<legend>​Situation​</legend>	
+				<input th:type="text" th:field="*{situation.statutPro}" th:placeholder="#{situation.statutpro}"/> 
+					<span th:if="${#fields.hasErrors('situation.statutPro')}" th:errors="*{situation.statutPro}"></span>​
+					​<br>	
+				<input th:type="text" th:field="*{situation.statutPerso}" th:placeholder="#{situation.statutperso}"/> 
+					<span th:if="${#fields.hasErrors('situation.statutPerso')}" th:errors="*{situation.statutPerso}"></span>​
+					​<br>
+				<input th:type="text" th:field="*{situation.nbrEnfant}" th:placeholder="#{situation.nbrenfant}"/> 
+					<span th:if="${#fields.hasErrors('situation.nbrEnfant')}" th:errors="*{situation.nbrEnfant}"></span>​
+					​<br>	
+				<input th:type="text" th:field="*{situation.fumeur}" th:placeholder="#{situation.fumeur}"/> 
+					<span th:if="${#fields.hasErrors('situation.fumeur')}" th:errors="*{situation.fumeur}"></span>​
+					​<br>	
+				<input th:type="text" th:field="*{situation.alcool}" th:placeholder="#{situation.alcool}"/> 
+					<span th:if="${#fields.hasErrors('situation.alcool')}" th:errors="*{situation.alcool}"></span>​
+					​<br>
+			</fieldset>		
+			​<fieldset>
+			<legend>​Adresse​</legend>	
+				<input th:type="text" th:field="*{adresse.codePostal}" th:placeholder="#{adresse.codepostal}"/> 
+					<span th:if="${#fields.hasErrors('adresse.codePostal')}" th:errors="*{adresse.codePostal}"></span>​
+					​<br>		
+				<input th:type="text" th:field="*{adresse.ville}" th:placeholder="#{adresse.ville}"/> 
+					<span th:if="${#fields.hasErrors('adresse.ville')}" th:errors="*{adresse.ville}"></span>​
+					​<br>	
+				<input th:type="text" th:field="*{adresse.numero}" th:placeholder="#{adresse.numero}"/> 
+					<span th:if="${#fields.hasErrors('adresse.numero')}" th:errors="*{adresse.numero}"></span>​
+					​<br>
+				<input th:type="text" th:field="*{adresse.typeRue}" th:placeholder="#{adresse.typerue}"/> 
+					<span th:if="${#fields.hasErrors('adresse.typeRue')}" th:errors="*{adresse.typeRue}"></span>​
+					​<br>	
+				<input th:type="text" th:field="*{adresse.nomRue}" th:placeholder="#{adresse.nomrue}"/> 
+					<span th:if="${#fields.hasErrors('adresse.nomRue')}" th:errors="*{adresse.nomRue}"></span>​
+					​<br>	
+				<input th:type="text" th:field="*{adresse.complement}" th:placeholder="#{adresse.complement}"/> 
+					<span th:if="${#fields.hasErrors('adresse.complement')}" th:errors="*{adresse.complement}"></span>​
+					​<br>	
+				<input th:type="text" th:field="*{adresse.prefixe}" th:placeholder="#{adresse.prefixe}"/> 
+					<span th:if="${#fields.hasErrors('adresse.prefixe')}" th:errors="*{adresse.prefixe}"></span>​
+					​<br>
+			</fieldset>							
+			<br>
 				
-				<select​ ​th:field​=​"*{situation.orientation}">    ​
-				<option​ ​value​=​""​ ​th:text​=​"#{situation.orientation}"​ ​selected​></option>    ​
-				<option​  ​th:each​=​"o : ${orientation}"​ ​th:value​=​"${o}"​ ​th:text​=​"${o.name()}"​></option>  
-				</select>  
+			<fieldset>					
+					<input th:type="submit" th:value="Valider">
+					<input th:type="reset" th:value="Annuler">
 			</fieldset>
 		</form>
 	</body>
