@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.formation.dating.entity.Adresse;
 import com.formation.dating.entity.Apparence;
+import com.formation.dating.entity.Login;
 import com.formation.dating.entity.Situation;
 import com.formation.dating.entity.Utilisateur;
 import com.formation.dating.enums.Orientation;
@@ -49,9 +51,10 @@ public class UtilisateursControllers {
 	//----------------------READ---------------------------------------
 	
 	@GetMapping("/dating/utilisateurs")
-	public ModelAndView getUtilisateurs(ModelMap model){
+	public ModelAndView getUtilisateurs(ModelMap model, HttpSession httpSession){
 		List<Utilisateur> users = (List<Utilisateur>) utilisateurService.findAll();
 		model.addAttribute("users",users);
+		model.addAttribute("session",httpSession);
 		return new ModelAndView ("pages/utilisateurs/users").addObject("users", users);
 	}
 	
@@ -90,9 +93,40 @@ public class UtilisateursControllers {
 			user.setAdresse(adresse);
 			situationService.save(situation);
 			user.setSituation(situation);
+			user.setMotDePasse(UtilisateurService.get_SHA_512_SecurePassword(user.getMotDePasse()));
 			model.addAttribute("user", user);
 			utilisateurService.save(user);
 			return "redirect:/dating/utilisateurs";
 		}	
+	}
+	
+	//-------------------------------LOGIN-------------------------------------------
+	
+	@GetMapping("/dating/utilisateurs/login")
+	public String connexion(ModelMap model){
+		Login login=new Login();
+		model.addAttribute("login", login);
+		return ("pages/utilisateurs/login");
+	}
+	
+	@PostMapping("/dating/utilisateurs/login")
+	public String connexionPost(@Valid @ModelAttribute(name="login") Login login,
+								BindingResult bindingResult,
+								ModelMap model,
+								HttpSession httpSession){
+		Utilisateur user = utilisateurService.findUtilisateurByEmailAndPassword(login.getEmail(), login.getPassword());
+		if(bindingResult.hasErrors() || user == null){
+			model.addAttribute("message", "Veuillez vérifier vos informations !");
+			return ("pages/utilisateurs/login");
+		}
+		httpSession.setAttribute("user", user);
+		httpSession.setMaxInactiveInterval(360);
+		return "redirect:/dating/utilisateurs";
+	}
+	
+	@GetMapping("/dating/utilisateurs/logout")
+	public String logout(HttpSession httpSession){
+		httpSession.invalidate();
+		return "redirect:/dating/utilisateurs";
 	}
 }

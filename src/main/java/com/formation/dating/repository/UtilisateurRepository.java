@@ -8,5 +8,6 @@ import com.formation.dating.entity.Utilisateur;
 public interface UtilisateurRepository extends CrudRepository<Utilisateur, String>{
 	
 	public Iterable<Utilisateur> findAll();
+	public Utilisateur findUtilisateurByEmailUtilisateurAndMotDePasse(String email, String password);
 	
 }

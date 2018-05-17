@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="FR" xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+<th:block th:replace="/fragments/header"></th:block>
+
 		<title th:text="#{user.new}"></title>	
 	</head>
 	<body>
+	<th:block th:replace="/fragments/nav"></th:block>
 		<h1 th:text="#{user.new}"></h1>
 		<form th:action="@{register}" th:method="post">
 		<div class="utilisateur">	​
@@ -127,5 +125,8 @@
 			
 		</div>	
 		</form>
+		
+		<th:block th:replace="/fragments/footer"></th:block>
+		
 	</body>
 </html>

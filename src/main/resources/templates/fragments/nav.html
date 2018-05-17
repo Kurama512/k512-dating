@@ -1,0 +1,6 @@
+<ul class="menu">
+	<a class="menuli" href="/dating/utilisateurs" th:text="#{user.list}"><li></li></a>
+	<a class="menuli" href="/dating/utilisateurs/register" th:text="#{user.new}"><li></li></a>
+	<a class="menuli" th:if="${session.user}==null" href="/dating/utilisateurs/login" th:text="#{user.login}"><li></li></a>
+	<a class="menuli" th:if="${session.user} != null"  th:text="#{user.logout}" href="/dating/utilisateurs/logout"><li></li></a>
+</ul>

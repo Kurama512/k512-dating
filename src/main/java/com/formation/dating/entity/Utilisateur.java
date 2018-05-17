@@ -35,7 +35,7 @@ public class Utilisateur {
 	@Column(length=10)
 	private String sexe;
 	@NotBlank
-	@Column(length=100)
+	@Column(length=255)
 	private String motDePasse;
 	@NotBlank
 	@Column(length=100)

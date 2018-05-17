@@ -1,12 +1,18 @@
-<!DOCTYPE html>
-<html lang="FR" xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+<th:block th:replace="/fragments/header"></th:block>
+
 		<title th:text="#{user.login}"></title>	
 	</head>
 	<body>
+	<th:block th:replace="/fragments/nav"></th:block>
+		<form th:action="@{/dating/utilisateurs/login}" th:method="post">
+			<div>
+				<input th:type="email" th:placeholder="#{user.email}" th:field="*{login.email}" required>
+				<input th:type="password" th:placeholder="#{user.password}" th:field="*{login.password}" required>
+				<input th:type="submit" name="submit" th:value="Valider">
+				<span th:text=${message}></span>
+			</div>
+			
+		<th:block th:replace="/fragments/footer"></th:block>
 		
-
 	</body>
 </html>
