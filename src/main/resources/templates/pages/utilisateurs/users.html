@@ -4,8 +4,9 @@
 	</head>
 	<body>
 	<th:block th:replace="/fragments/nav"></th:block>
+		
 		<h1 th:text="#{user.list}"></h1>
-		<h1 th:if="${session.user != null}" th:text="|#{bonjour} ${session.user.pseudo}|"></h1>
+		
 		
 		<div th:each="u : ${users}">
 		<p  th:text="${u.pseudo}+': '+${u.nom}+' '+${u.prenom}+', '+${u.adresse.numero}+

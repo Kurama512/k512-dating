@@ -1,3 +1,4 @@
+<h1 class="bonjour" th:if="${session.user != null}" th:text="|#{bonjour} ${session.user.pseudo}|"></h1>
 <ul class="menu">
 	<a class="menuli" href="/dating/utilisateurs" th:text="#{user.list}"><li></li></a>
 	<a class="menuli" href="/dating/utilisateurs/register" th:text="#{user.new}"><li></li></a>
