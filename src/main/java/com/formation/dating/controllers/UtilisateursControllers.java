@@ -24,16 +24,26 @@ import com.formation.dating.entity.Apparence;
 import com.formation.dating.entity.Situation;
 import com.formation.dating.entity.Utilisateur;
 import com.formation.dating.enums.Orientation;
+import com.formation.dating.services.ApparenceService;
 import com.formation.dating.services.UtilisateurService;
+import com.formation.dating.services.SituationService;
+import com.formation.dating.services.AdresseService;
 
 @Controller
 public class UtilisateursControllers {
 	
-private final UtilisateurService utilisateurService;
+	private final UtilisateurService utilisateurService;
+	private final ApparenceService apparenceService;
+	private final AdresseService adresseService;
+	private final SituationService situationService;
 	
 	@Autowired
-	public UtilisateursControllers(UtilisateurService utilisateurService){
+	public UtilisateursControllers(UtilisateurService utilisateurService, ApparenceService apparenceService, 
+			AdresseService adresseService, SituationService situationService){
 		this.utilisateurService=utilisateurService;
+		this.apparenceService=apparenceService;
+		this.adresseService=adresseService;
+		this.situationService=situationService;
 	}
 	
 	//----------------------READ---------------------------------------
@@ -59,7 +69,7 @@ private final UtilisateurService utilisateurService;
 				.addObject("apparence",apparence);
 	}
 	
-	@PostMapping("/register")
+	@PostMapping("/dating/utilisateurs/register")
 	public String postFromCreate(
 			@Valid @ModelAttribute(name="user") Utilisateur user, BindingResult userResult,
 			@Valid @ModelAttribute(name="adresse") Adresse adresse, BindingResult adresseResult,
@@ -71,10 +81,14 @@ private final UtilisateurService utilisateurService;
 				apparenceResult.hasErrors()){
 			List<Utilisateur> users = (List<Utilisateur>) utilisateurService.findAll();
 			model.addAttribute("users",users);
+			model.addAttribute("orientation", Orientation.values());
 			return ("pages/utilisateurs/register");
 		}else{
+			apparenceService.save(apparence);
 			user.setApparence(apparence);
+			adresseService.save(adresse);
 			user.setAdresse(adresse);
+			situationService.save(situation);
 			user.setSituation(situation);
 			model.addAttribute("user", user);
 			utilisateurService.save(user);

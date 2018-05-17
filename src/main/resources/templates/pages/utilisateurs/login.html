@@ -3,15 +3,10 @@
 	<head>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
-		<title th:text="#{user.list}"></title>	
+		<title th:text="#{user.login}"></title>	
 	</head>
 	<body>
-		<h1 th:text="#{user.list}"></h1>
-		<h1 th:text="#{user.email}"></h1>
-		<div th:each="u : ${users}">
-		<p  th:text="${u.nom}"></p>
 		
-		
-		</div>
+
 	</body>
 </html>

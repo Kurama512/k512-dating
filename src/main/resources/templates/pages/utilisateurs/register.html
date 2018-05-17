@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="FR" xmlns="http://www.thymeleaf.org">
+<html lang="FR" xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
@@ -7,7 +7,7 @@
 	</head>
 	<body>
 		<h1 th:text="#{user.new}"></h1>
-		<form​  th:action="@{/register}" th:method="post">
+		<form th:action="@{register}" th:method="post">
 		<div class="utilisateur">	​
 		<fieldset>
 			<legend th:text="#{user}"></legend>
@@ -56,7 +56,7 @@
 				<input th:type="text" th:field="*{situation.nbrEnfant}" th:placeholder="#{situation.nbrenfant}"/> 
 					<span th:if="${#fields.hasErrors('situation.nbrEnfant')}" th:errors="*{situation.nbrEnfant}"></span>​
 					​<br>
-				<select th:fiels="*{situation.orientation}">
+				<select th:field="*{situation.orientation}">
 					<option value="" th:text="#{situation.orientation}" selected></option>
 					<option th:each="o:${orientation}" th:value="${o}"th:text="${o.name()}"></option>
 				</select>		
@@ -122,8 +122,8 @@
 			<br>
 		<div class="action">	
 					<br>				
-					<input type="submit" value="Valider">
-					<a href="/dating/utilisateurs"><input type="reset" value="Annuler"></a>
+					<input type="submit" name = "submit" value="Valider"/>
+					<a href="/dating/utilisateurs"><input type="reset" name = "reset" value="Annuler"></a>
 			
 		</div>	
 		</form>
