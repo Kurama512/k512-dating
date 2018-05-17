@@ -8,7 +8,8 @@
 		<h1 th:if="${session.user != null}" th:text="|#{bonjour} ${session.user.pseudo}|"></h1>
 		
 		<div th:each="u : ${users}">
-		<p  th:text="${u.nom}"></p>
+		<p  th:text="${u.pseudo}+': '+${u.nom}+' '+${u.prenom}+', '+${u.adresse.numero}+
+		 ${u.adresse.prefixe}+' '+${u.adresse.typeRue}+' '+${u.adresse.nomRue}+', '+${u.adresse.codePostal}+' '+${u.adresse.ville}"></p>
 		</div>
 		
 		<th:block th:replace="/fragments/footer"></th:block>

@@ -5,7 +5,7 @@
 	<body>
 	<th:block th:replace="/fragments/nav"></th:block>
 		<h1 th:text="#{user.new}"></h1>
-		<form th:action="@{register}" th:method="post">
+		<form th:action="@{register}" enctype="multipart/form-data" th:method="post">
 		<div class="utilisateur">	​
 		<fieldset>
 			<legend th:text="#{user}"></legend>
@@ -114,7 +114,9 @@
 					​<br>	
 				<input th:type="text" th:field="*{apparence.masse}" th:placeholder="#{apparence.masse}"/> 
 					<span th:if="${#fields.hasErrors('apparence.masse')}" th:errors="*{apparence.masse}"></span>​
-					​<br>	
+					​<br>
+    			<input type="file" name="uploadingFiles" accept="image/*" multiple/><br />
+				<br>		
 			</fieldset>	
 		</div>						
 			<br>

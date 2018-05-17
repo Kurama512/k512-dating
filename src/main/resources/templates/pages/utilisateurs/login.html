@@ -4,6 +4,7 @@
 	</head>
 	<body>
 	<th:block th:replace="/fragments/nav"></th:block>
+		<h1 th:text="#{user.login}"></h1>
 		<form th:action="@{/dating/utilisateurs/login}" th:method="post">
 			<div>
 				<input th:type="email" th:placeholder="#{user.email}" th:field="*{login.email}" required>

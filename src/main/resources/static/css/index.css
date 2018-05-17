@@ -1,10 +1,62 @@
-body {
-	background-color: #ffc8c8;
-	width:50%;
+@import url('https://fonts.googleapis.com/css?family=Great+Vibes');
+
+.full {
+	margin:0;
+	padding:0;
+	height:100%;
+	width:100%;
 	}
 	
+body {
+	height:100%;
+	width:100%;
+	background-color: #ffc8c8;
+}
+	
+img{
+	text-align:center;
+	max-width:100%;
+	height:auto;
+	width:auto;
+}	
+
+.intro {
+	height:1000px;
+	width:100%;
+	margin:auto;
+	background:url('nature.jpg') no-repeat 50% 50%;
+	background-size:cover;
+	display:table;
+	top:0;
+}
+
+.content {
+	max-width:600px;
+	margin:auto;
+	
+}
+
+h1 {
+	font-family:'Great Vibes',serif;
+	font-size: 500%;
+	font-weight:700;
+	color:white;
+	text-align:center;
+	padding:2%;
+	text-shadow:0px 0px 250px #000;	
+}
+
+p {
+	font-family:'Great Vibes',serif;
+	font-size: 200%;
+	font-weight:500;
+	color:black;
+	text-align:left;
+	padding:0;
+	text-shadow:0px 0px 250px #000;	}
+	
 fieldset{
-	width:25%;
+	
 	height:235px;
 }	
 

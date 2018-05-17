@@ -1,19 +1,13 @@
-<!DOCTYPE html>
-<html lang="FR" xmlns="http://www.thymeleaf.org">
-	<head>
-		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+<th:block th:replace="/fragments/header"></th:block>
+
 		<title>Index</title>	
 	</head>
-	<body>
+	<body class="full">
+	<section class="intro">
+		<a href="/dating/utilisateurs">
+		<div class="content">
+			<h1 th:text="#{bienvenue}"></h1>
+		</div>
+	</section></a>	
 	</body>
-</html>
-
-
-
-
-
-
-
-
 </html>
