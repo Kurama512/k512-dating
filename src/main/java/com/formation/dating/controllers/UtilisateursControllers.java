@@ -14,6 +14,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -61,6 +62,18 @@ public class UtilisateursControllers {
 		model.addAttribute("users",users);
 		model.addAttribute("session",httpSession);
 		return new ModelAndView ("pages/utilisateurs/users").addObject("users", users);
+	}
+	
+	@GetMapping("/dating/utilisateurs/{emailUtilisateur}")
+	public String getUtilisateur(@PathVariable String emailUtilisateur,
+			ModelMap model, HttpSession httpSession){
+		List<Utilisateur> users = (List<Utilisateur>) utilisateurService.findAll();
+			for(Utilisateur u : users){
+					if(u.getEmailUtilisateur().equals(emailUtilisateur)){
+						model.addAttribute("user",u);		
+					}
+			}
+		return ("pages/utilisateurs/user");
 	}
 	
 	//----------------------CREATE--------------------------------------

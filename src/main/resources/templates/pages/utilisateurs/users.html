@@ -9,8 +9,7 @@
 		
 		<table>
 		<tr th:each="u : ${users}">
-			<td th:each="p : ${u.photos}"><img th:src="'/img/'+${p.lien}"></td>
-			
+			<td th:each="p : ${u.photos}"><a th:href="@{/dating/utilisateurs/}+${u.emailUtilisateur}"><img th:src="'/img/'+${p.lien}"></td>	
 			<td  th:text="${u.pseudo}"></td>
 			<td  th:text="${u.adresse.ville}"></td>
 			<!--<td  th:text="${u.nom}"></td>
@@ -19,7 +18,7 @@
 			 ${u.adresse.prefixe}+' '+${u.adresse.typeRue}+
 			 ' '+${u.adresse.nomRue}+', '+${u.adresse.codePostal}+
 			 ' '+${u.adresse.ville}"></td>-->
-			 </tr>
+			</tr>
 		</table>
 		
 		<th:block th:replace="/fragments/footer"></th:block>

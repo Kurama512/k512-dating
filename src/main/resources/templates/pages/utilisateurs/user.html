@@ -1,0 +1,32 @@
+<th:block th:replace="/fragments/header"></th:block>
+
+		<title th:text="#{user}"></title>	
+	</head>
+	<body th:if="${session.user} != null">
+	<th:block th:replace="/fragments/nav"></th:block>
+		
+		<h1 th:text="#{user.profile}+' '+${user.pseudo}"></h1>
+			<div class="profil">
+				<span class="portrait" th:each="p : ${user.photos}"><img th:src="'/img/'+${p.lien}"></span>
+				
+				<div class="texteprofil">
+					<table class="fiche">
+						<tr>
+							<td  th:text="${user.nom}"></td>
+							<td  th:text="${user.prenom}"></td>
+						</tr>
+						<tr>
+							<td colspan="2" th:utext="${user.adresse.numero}+
+							 ${user.adresse.prefixe}+' '+${user.adresse.typeRue}+
+							 ' '+${user.adresse.nomRue}+',<br> '+${user.adresse.codePostal}+
+							 ' '+${user.adresse.ville}"></td>
+						 </tr>
+					 </table>
+				 </div> 
+			 </div>
+			
+		
+		<th:block th:replace="/fragments/footer"></th:block>
+		
+	</body>
+</html>
