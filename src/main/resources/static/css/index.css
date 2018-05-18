@@ -126,6 +126,7 @@ fieldset{
 a {
 	text-decoration:none;
 	margin-left:20px;
+	text-shadow: 1px 1px #fff;
 	}
 	
 tr {
@@ -216,8 +217,11 @@ legend {
 
 .menuli2 {
 	margin-left:20px;
+	text-shadow:1px 1px #fff;
 }
 td img {
 	height:15%;
 	width:15%;
 }
+
+tr:hover {opacity:0.6;}

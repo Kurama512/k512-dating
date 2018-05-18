@@ -2,7 +2,7 @@
 
 		<title th:text="#{user.list}"></title>	
 	</head>
-	<body>
+	<body th:if="${session.user} != null">
 	<th:block th:replace="/fragments/nav"></th:block>
 		
 		<h1 th:text="#{user.list}"></h1>
@@ -12,6 +12,7 @@
 			<td th:each="p : ${u.photos}"><img th:src="'/img/'+${p.lien}"></td>
 			
 			<td  th:text="${u.pseudo}"></td>
+			<td  th:text="${u.adresse.ville}"></td>
 			<!--<td  th:text="${u.nom}"></td>
 			<td  th:text="${u.prenom}"></td>
 			<td  th:text="${u.adresse.numero}+
