@@ -23,10 +23,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.formation.dating.entity.Adresse;
 import com.formation.dating.entity.Apparence;
 import com.formation.dating.entity.Login;
+import com.formation.dating.entity.Photo;
 import com.formation.dating.entity.Situation;
 import com.formation.dating.entity.Utilisateur;
 import com.formation.dating.enums.Orientation;
 import com.formation.dating.services.ApparenceService;
+import com.formation.dating.services.PhotoService;
 import com.formation.dating.services.UtilisateurService;
 import com.formation.dating.services.SituationService;
 import com.formation.dating.services.AdresseService;
@@ -38,14 +40,17 @@ public class UtilisateursControllers {
 	private final ApparenceService apparenceService;
 	private final AdresseService adresseService;
 	private final SituationService situationService;
+	private final PhotoService photoService;
+	
 	
 	@Autowired
 	public UtilisateursControllers(UtilisateurService utilisateurService, ApparenceService apparenceService, 
-			AdresseService adresseService, SituationService situationService){
+			AdresseService adresseService, SituationService situationService, PhotoService photoService){
 		this.utilisateurService=utilisateurService;
 		this.apparenceService=apparenceService;
 		this.adresseService=adresseService;
 		this.situationService=situationService;
+		this.photoService=photoService;
 	}
 	
 	//----------------------READ---------------------------------------
@@ -59,6 +64,7 @@ public class UtilisateursControllers {
 	}
 	
 	//----------------------CREATE--------------------------------------
+	
 	@GetMapping("/dating/utilisateurs/register")
 	public ModelAndView createUser(ModelMap model){
 		model.addAttribute("orientation", Orientation.values());
@@ -78,7 +84,8 @@ public class UtilisateursControllers {
 			@Valid @ModelAttribute(name="adresse") Adresse adresse, BindingResult adresseResult,
 			@Valid @ModelAttribute(name="situation") Situation situation, BindingResult situationResult,
 			@Valid @ModelAttribute(name="apparence") Apparence apparence, BindingResult apparenceResult,
-			ModelMap model) throws IOException{
+			ModelMap model,
+			@RequestParam(value="uploadingFiles")MultipartFile[] uploadingFiles, RedirectAttributes redirectAttributes) throws IOException{
 			
 		if (userResult.hasErrors()||adresseResult.hasErrors()||situationResult.hasErrors()||
 				apparenceResult.hasErrors()){
@@ -87,6 +94,7 @@ public class UtilisateursControllers {
 			model.addAttribute("orientation", Orientation.values());
 			return ("pages/utilisateurs/register");
 		}else{
+			
 			apparenceService.save(apparence);
 			user.setApparence(apparence);
 			adresseService.save(adresse);
@@ -96,7 +104,22 @@ public class UtilisateursControllers {
 			user.setMotDePasse(UtilisateurService.get_SHA_512_SecurePassword(user.getMotDePasse()));
 			model.addAttribute("user", user);
 			utilisateurService.save(user);
-			return "redirect:/dating/utilisateurs";
+			
+			for (MultipartFile uploadedFile : uploadingFiles) {
+				if(PhotoController.checkIfImage(uploadedFile.getOriginalFilename())){
+					File file = new File(PhotoController.UPLOAD_FOLDER + uploadedFile.getOriginalFilename());
+					uploadedFile.transferTo(file);
+					 Photo photo=new Photo();
+					 photo.setUtilisateurPhoto(user);
+					 photo.setLien(uploadedFile.getOriginalFilename());
+					 System.out.println(photo);
+					 photoService.saveOne(photo);
+				}  
+			}
+			List<Photo> photos = photoService.findByUtilisateurPhoto(user);
+			user.setPhotos(photos);
+			utilisateurService.save(user);
+			return "redirect:/dating/utilisateurs/login";
 		}	
 	}
 	
@@ -127,6 +150,6 @@ public class UtilisateursControllers {
 	@GetMapping("/dating/utilisateurs/logout")
 	public String logout(HttpSession httpSession){
 		httpSession.invalidate();
-		return "redirect:/dating/utilisateurs";
+		return "redirect:/dating/utilisateurs/login";
 	}
 }

@@ -11,6 +11,12 @@ body {
 	height:100%;
 	width:100%;
 	background-color: #ffc8c8;
+	margin:auto;
+	background:url('nature.jpg') no-repeat 50% 50%;
+	background-size:cover;
+	display:table;
+	top:0;
+	background-attachment: fixed;
 }
 	
 img{
@@ -18,64 +24,79 @@ img{
 	max-width:100%;
 	height:auto;
 	width:auto;
+	opacity:1;
 }	
 
 .intro {
-	height:1000px;
+	height:100%;
 	width:100%;
 	margin:auto;
 	background:url('nature.jpg') no-repeat 50% 50%;
 	background-size:cover;
 	display:table;
 	top:0;
+	background-attachment: fixed;
 }
 
 .content {
 	max-width:600px;
 	margin:auto;
-	
 }
 
 .bonjour {
 	font-family:'Great Vibes',serif;
-	font-size: 150%;
+	font-size: 180%;
 	font-weight:500;
-	color:black;
+	color:white;
 	text-align:left;
 	padding:0;
-	text-shadow:0px 0px 250px #000;	
+	text-shadow:2px 2px #000;
 }
 
+.menuli {
+	position:fixed;
+}
 h1 {
 	font-family:'Great Vibes',serif;
 	font-size: 500%;
 	font-weight:700;
 	color:white;
 	text-align:center;
-	padding:2%;
-	text-shadow:0px 0px 250px #000;	
+	text-shadow:2px 2px #000;	
+	margin-bottom:5px;
 }
 
 p {
 	font-family:'Great Vibes',serif;
 	font-size: 200%;
 	font-weight:500;
-	color:black;
+	color:white;
 	text-align:left;
 	padding:0;
-	text-shadow:0px 0px 250px #000;	}
+	text-shadow:2px 2px #000;	}
 	
 .footer{
+	clear:both;
 	font-family:'Great Vibes',serif;
 	font-size: 150%;
 	font-weight:500;
-	color:black;
+	color:white;
 	text-align:center;
 	padding:0;
-	text-shadow:0px 0px 250px #000;
+	text-shadow:2px 2px #000;
+	position:absolute;
+	bottom:10px;
+	position: fixed;
 }	
+
+hr {clear:both;
+	display:block;
+	position:absolute;
+	bottom:50px;
+	position: fixed;}
 	
 fieldset{
+	margin-top:5px;
 	min-height:235px;
 }	
 
@@ -96,9 +117,107 @@ fieldset{
 }
 
 .action {
-	clear:both;
+	float:right;
+	margin-left:auto;
+	margin-right:2rem;
+	margin-top:2.5rem;
 }
 
 a {
 	text-decoration:none;
+	margin-left:20px;
 	}
+	
+tr {
+	font-family:'Great Vibes',serif;
+	font-size: 200%;
+	width:80%;
+	background : #fff;
+	opacity:0.5;
+	border:1px solid black;
+	margin:10%;
+	margin-top:2%;
+	border-radius:10px;
+	margin-bottom:2%;
+	height :auto;
+}	
+
+table{
+	margin:auto;
+	width:100%;
+}
+
+tr {
+	display:block;
+}
+
+td {
+	width:10%;
+	padding:2%;
+}
+
+input{
+	width:10rem;
+	height:2rem;
+	border-radius:3px;
+	padding : 2px;
+	margin-bottom:10px;
+}
+select{
+	width:10.5rem;
+	height:2.5rem;
+	border-radius:3px;
+	padding : 2px;
+	margin-bottom:10px;
+}
+
+legend {
+	font-family:'Great Vibes',serif;
+	font-size: 150%;
+	color:white;
+	text-shadow:2px 2px #000;	
+	}
+
+.log{margin-left: auto;
+    margin-right: auto;
+    width:10rem;}
+
+.log2{margin-left: auto;
+    margin-right: auto;
+    width:50rem;}
+    
+    
+.btn {
+	color:white;
+	background : #05c;
+	width:10.5rem;
+	height:2.5rem;
+}  
+
+.btn-red {
+	color:white;
+	background : #c50;
+	width:10.5rem;
+	height:2.5rem;
+}      
+
+.error {
+	font-size:1.5rem;
+	color:red;
+	text-shadow:2px 2px #ff0;
+	padding:0;
+	margin:0;
+	text-align:center;
+}
+
+.clear {
+	clear:both}
+}
+
+.menuli2 {
+	margin-left:20px;
+}
+td img {
+	height:15%;
+	width:15%;
+}

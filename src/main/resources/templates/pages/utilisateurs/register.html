@@ -5,39 +5,40 @@
 	<body>
 	<th:block th:replace="/fragments/nav"></th:block>
 		<h1 th:text="#{user.new}"></h1>
+		<div class="log2">
 		<form th:action="@{register}" enctype="multipart/form-data" th:method="post">
 		<div class="utilisateur">	​
 		<fieldset>
 			<legend th:text="#{user}"></legend>
 				<input th:type="email" th:field="*{user.emailUtilisateur}" th:placeholder="#{user.email}"/>
-					<span th:if="${#fields.hasErrors('user.emailUtilisateur')}" th:errors="*{user.emailUtilisateur}"></span>​
+					<p class="error"  th:if="${#fields.hasErrors('user.emailUtilisateur')}" th:errors="*{user.emailUtilisateur}"></p>​
 					​<br>
 				<input th:type="text" th:field="*{user.nom}" th:placeholder="#{user.lastName}"/> 
-					<span th:if="${#fields.hasErrors('user.nom')}" th:errors="*{user.nom}"></span>​
+					<p class="error"  th:if="${#fields.hasErrors('user.nom')}" th:errors="*{user.nom}"></p>​
 					​<br>	
 				<input th:type="text" th:field="*{user.prenom}" th:placeholder="#{user.firstName}"/> 
-					<span th:if="${#fields.hasErrors('user.prenom')}" th:errors="*{user.prenom}"></span>​
+					<p class="error"  th:if="${#fields.hasErrors('user.prenom')}" th:errors="*{user.prenom}"></p>​
 					​<br>		
 				<input th:type="date" th:field="*{user.dateNaissance}" th:placeholder="#{user.birthday}"/> 
-					<span th:if="${#fields.hasErrors('user.dateNaissance')}" th:errors="*{user.dateNaissance}"></span>​
+					<p class="error"  th:if="${#fields.hasErrors('user.dateNaissance')}" th:errors="*{user.dateNaissance}"></p>​
 					​<br>		
 				<input th:type="text" th:field="*{user.sexe}" th:placeholder="#{user.sexe}"/> 
-					<span th:if="${#fields.hasErrors('user.sexe')}" th:errors="*{user.sexe}"></span>​
+					<p class="error"  th:if="${#fields.hasErrors('user.sexe')}" th:errors="*{user.sexe}"></p>​
 					​<br>	
 				<input th:type="password" th:field="*{user.motDePasse}" th:placeholder="#{user.password}"/> 
-					<span th:if="${#fields.hasErrors('user.motDePasse')}" th:errors="*{user.motDePasse}"></span>​
+					<p class="error"  th:if="${#fields.hasErrors('user.motDePasse')}" th:errors="*{user.motDePasse}"></p>​
 					​<br>
 				<input th:type="text" th:field="*{user.description}" th:placeholder="#{user.description}"/> 
-					<span th:if="${#fields.hasErrors('user.description')}" th:errors="*{user.description}"></span>​
+					<p class="error"  th:if="${#fields.hasErrors('user.description')}" th:errors="*{user.description}"></p>​
 					​<br>	
 				<input th:type="text" th:field="*{user.pseudo}" th:placeholder="#{user.pseudo}"/> 
-					<span th:if="${#fields.hasErrors('user.pseudo')}" th:errors="*{user.pseudo}"></span>​
+					<p class="error"  th:if="${#fields.hasErrors('user.pseudo')}" th:errors="*{user.pseudo}"></p>​
 					​<br>	
 				<input th:type="text" th:field="*{user.numeroTel}" th:placeholder="#{user.numeroTel}"/> 
-					<span th:if="${#fields.hasErrors('user.numeroTel')}" th:errors="*{user.numeroTel}"></span>​
+					<p class="error"  th:if="${#fields.hasErrors('user.numeroTel')}" th:errors="*{user.numeroTel}"></p>​
 					​<br>		
 				<input th:type="text" th:field="*{user.type}" th:placeholder="#{user.type}"/> 
-					<span th:if="${#fields.hasErrors('user.type')}" th:errors="*{user.type}"></span>​
+					<p class="error"  th:if="${#fields.hasErrors('user.type')}" th:errors="*{user.type}"></p>​
 					​<br>	
 			</fieldset>	
 		</div>
@@ -46,13 +47,13 @@
 			​<fieldset>
 			<legend th:text="#{situation}"></legend>
 				<input th:type="text" th:field="*{situation.statutPro}" th:placeholder="#{situation.statutpro}"/> 
-					<span th:if="${#fields.hasErrors('situation.statutPro')}" th:errors="*{situation.statutPro}"></span>​
+					<p class="error"  th:if="${#fields.hasErrors('situation.statutPro')}" th:errors="*{situation.statutPro}"></p>​
 					​<br>	
 				<input th:type="text" th:field="*{situation.statutPerso}" th:placeholder="#{situation.statutperso}"/> 
-					<span th:if="${#fields.hasErrors('situation.statutPerso')}" th:errors="*{situation.statutPerso}"></span>​
+					<p class="error"  th:if="${#fields.hasErrors('situation.statutPerso')}" th:errors="*{situation.statutPerso}"></p>​
 					​<br>
 				<input th:type="text" th:field="*{situation.nbrEnfant}" th:placeholder="#{situation.nbrenfant}"/> 
-					<span th:if="${#fields.hasErrors('situation.nbrEnfant')}" th:errors="*{situation.nbrEnfant}"></span>​
+					<p class="error"  th:if="${#fields.hasErrors('situation.nbrEnfant')}" th:errors="*{situation.nbrEnfant}"></p>​
 					​<br>
 				<select th:field="*{situation.orientation}">
 					<option value="" th:text="#{situation.orientation}" selected></option>
@@ -60,10 +61,10 @@
 				</select>		
 					<br>		
 				<input th:type="text" th:field="*{situation.fumeur}" th:placeholder="#{situation.fumeur}"/> 
-					<span th:if="${#fields.hasErrors('situation.fumeur')}" th:errors="*{situation.fumeur}"></span>​
+					<p class="error"  th:if="${#fields.hasErrors('situation.fumeur')}" th:errors="*{situation.fumeur}"></p>​
 					​<br>	
 				<input th:type="text" th:field="*{situation.alcool}" th:placeholder="#{situation.alcool}"/> 
-					<span th:if="${#fields.hasErrors('situation.alcool')}" th:errors="*{situation.alcool}"></span>​
+					<p class="error"  th:if="${#fields.hasErrors('situation.alcool')}" th:errors="*{situation.alcool}"></p>​
 					​<br>
 			</fieldset>	
 		</div>	
@@ -71,25 +72,25 @@
 			​<fieldset>
 			<legend th:text="#{adresse}"></legend>	
 				<input th:type="text" th:field="*{adresse.codePostal}" th:placeholder="#{adresse.codepostal}"/> 
-					<span th:if="${#fields.hasErrors('adresse.codePostal')}" th:errors="*{adresse.codePostal}"></span>​
+					<p class="error"  th:if="${#fields.hasErrors('adresse.codePostal')}" th:errors="*{adresse.codePostal}"></p>​
 					​<br>		
 				<input th:type="text" th:field="*{adresse.ville}" th:placeholder="#{adresse.ville}"/> 
-					<span th:if="${#fields.hasErrors('adresse.ville')}" th:errors="*{adresse.ville}"></span>​
+					<p class="error"  th:if="${#fields.hasErrors('adresse.ville')}" th:errors="*{adresse.ville}"></p>​
 					​<br>	
 				<input th:type="text" th:field="*{adresse.numero}" th:placeholder="#{adresse.numero}"/> 
-					<span th:if="${#fields.hasErrors('adresse.numero')}" th:errors="*{adresse.numero}"></span>​
+					<p class="error"  th:if="${#fields.hasErrors('adresse.numero')}" th:errors="*{adresse.numero}"></p>​
 					​<br>
 				<input th:type="text" th:field="*{adresse.typeRue}" th:placeholder="#{adresse.typerue}"/> 
-					<span th:if="${#fields.hasErrors('adresse.typeRue')}" th:errors="*{adresse.typeRue}"></span>​
+					<p class="error"  th:if="${#fields.hasErrors('adresse.typeRue')}" th:errors="*{adresse.typeRue}"></p>​
 					​<br>	
 				<input th:type="text" th:field="*{adresse.nomRue}" th:placeholder="#{adresse.nomrue}"/> 
-					<span th:if="${#fields.hasErrors('adresse.nomRue')}" th:errors="*{adresse.nomRue}"></span>​
+					<p class="error"  th:if="${#fields.hasErrors('adresse.nomRue')}" th:errors="*{adresse.nomRue}"></p>​
 					​<br>	
 				<input th:type="text" th:field="*{adresse.complement}" th:placeholder="#{adresse.complement}"/> 
-					<span th:if="${#fields.hasErrors('adresse.complement')}" th:errors="*{adresse.complement}"></span>​
+					<p class="error"  th:if="${#fields.hasErrors('adresse.complement')}" th:errors="*{adresse.complement}"></p>​
 					​<br>	
 				<input th:type="text" th:field="*{adresse.prefixe}" th:placeholder="#{adresse.prefixe}"/> 
-					<span th:if="${#fields.hasErrors('adresse.prefixe')}" th:errors="*{adresse.prefixe}"></span>​
+					<p class="error"  th:if="${#fields.hasErrors('adresse.prefixe')}" th:errors="*{adresse.prefixe}"></p>​
 					​<br>
 			</fieldset>							
 		</div>
@@ -98,22 +99,22 @@
 			​<fieldset>
 			<legend th:text="#{apparence}"></legend>	
 				<input th:type="text" th:field="*{apparence.taille}" th:placeholder="#{apparence.taille}"/> 
-					<span th:if="${#fields.hasErrors('apparence.taille')}" th:errors="*{apparence.taille}"></span>​
+					<p class="error"  th:if="${#fields.hasErrors('apparence.taille')}" th:errors="*{apparence.taille}"></p>​
 					​<br>		
 				<input th:type="text" th:field="*{apparence.couleurYeux}" th:placeholder="#{apparence.couleuryeux}"/> 
-					<span th:if="${#fields.hasErrors('apparence.couleurYeux')}" th:errors="*{adresse.couleurYeux}"></span>​
+					<p class="error"  th:if="${#fields.hasErrors('apparence.couleurYeux')}" th:errors="*{adresse.couleurYeux}"></p>​
 					​<br>	
 				<input th:type="text" th:field="*{apparence.origine}" th:placeholder="#{apparence.origine}"/> 
-					<span th:if="${#fields.hasErrors('apparence.origine')}" th:errors="*{apparence.origine}"></span>​
+					<p class="error"  th:if="${#fields.hasErrors('apparence.origine')}" th:errors="*{apparence.origine}"></p>​
 					​<br>
 				<input th:type="text" th:field="*{apparence.couleurCheveux}" th:placeholder="#{apparence.couleurcheveux}"/> 
-					<span th:if="${#fields.hasErrors('apparence.couleurCheveux')}" th:errors="*{apparence.couleurCheveux}"></span>​
+					<p class="error"  th:if="${#fields.hasErrors('apparence.couleurCheveux')}" th:errors="*{apparence.couleurCheveux}"></p>​
 					​<br>	
 				<input th:type="text" th:field="*{apparence.typeCheveux}" th:placeholder="#{apparence.typecheveux}"/> 
-					<span th:if="${#fields.hasErrors('apparence.typeCheveux')}" th:errors="*{apparence.typeCheveux}"></span>​
+					<p class="error"  th:if="${#fields.hasErrors('apparence.typeCheveux')}" th:errors="*{apparence.typeCheveux}"></p>​
 					​<br>	
 				<input th:type="text" th:field="*{apparence.masse}" th:placeholder="#{apparence.masse}"/> 
-					<span th:if="${#fields.hasErrors('apparence.masse')}" th:errors="*{apparence.masse}"></span>​
+					<p class="error"  th:if="${#fields.hasErrors('apparence.masse')}" th:errors="*{apparence.masse}"></p>​
 					​<br>
     			<input type="file" name="uploadingFiles" accept="image/*" multiple/><br />
 				<br>		
@@ -122,12 +123,14 @@
 			<br>
 		<div class="action">	
 					<br>				
-					<input type="submit" name = "submit" value="Valider"/>
-					<a href="/dating/utilisateurs"><input type="reset" name = "reset" value="Annuler"></a>
+					<input class="btn" type="submit" name = "submit" value="Valider"/>
+					<a href="/dating/index"><input class="btn-red" type="button" value="Annuler"></a>
 			
 		</div>	
 		</form>
+		</div>
 		
+		<br class="clear"><br>
 		<th:block th:replace="/fragments/footer"></th:block>
 		
 	</body>

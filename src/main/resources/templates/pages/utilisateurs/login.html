@@ -5,14 +5,16 @@
 	<body>
 	<th:block th:replace="/fragments/nav"></th:block>
 		<h1 th:text="#{user.login}"></h1>
+		<div class="log">
 		<form th:action="@{/dating/utilisateurs/login}" th:method="post">
 			<div>
 				<input th:type="email" th:placeholder="#{user.email}" th:field="*{login.email}" required>
 				<input th:type="password" th:placeholder="#{user.password}" th:field="*{login.password}" required>
-				<input th:type="submit" name="submit" th:value="Valider">
-				<span th:text=${message}></span>
+				<input class="btn" th:type="submit" name="submit" th:value="Valider">
+				<p class="error" th:text=${message}></p>
 			</div>
-			
+			<a class="menuli2" href="/dating/utilisateurs/register" th:text="#{user.new}+' ?'|"></a>
+		</div>	
 		<th:block th:replace="/fragments/footer"></th:block>
 		
 	</body>
